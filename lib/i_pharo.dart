@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:i_pharaoh/core/theme/app_theme.dart';
+import 'package:i_pharaoh/features/boarding/presentation/on_boarding_screen.dart';
 
 class IPharo extends StatelessWidget {
   const IPharo({super.key});
@@ -7,10 +8,11 @@ class IPharo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'IPharo',
       theme: AppTheme.lightTheme,
       themeMode: ThemeMode.light,
-      home: const Placeholder(),
+      home: OnBoardingScreen(),
     );
   }
 }
