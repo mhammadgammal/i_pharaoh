@@ -13,6 +13,12 @@ class AppTheme {
         height: 50.0,
         buttonColor: AppColors.goldSand,
         textTheme: ButtonTextTheme.normal),
+    elevatedButtonTheme: const ElevatedButtonThemeData(
+      style: ButtonStyle(
+        backgroundColor: WidgetStatePropertyAll(AppColors.goldSand),
+        foregroundColor: WidgetStatePropertyAll(AppColors.papyrusCream),
+      ),
+    ),
     iconTheme: const IconThemeData(color: AppColors.terracotta),
     textTheme: TextTheme(
       bodyLarge: GoogleFonts.montserrat(
