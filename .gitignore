@@ -44,3 +44,6 @@ app.*.map.json
 /assets/images/on_boarding/on_boarding_1.png
 /assets/images/on_boarding/on_boarding_2.png
 /assets/images/on_boarding/on_boarding_3.png
+/assets/images/login/login_background.png
+/assets/images/logo/app_icon.svg
+/assets/images/logo/app_icon_no_background.svg
