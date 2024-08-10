@@ -16,7 +16,14 @@ class AppTheme {
     elevatedButtonTheme: const ElevatedButtonThemeData(
       style: ButtonStyle(
         backgroundColor: WidgetStatePropertyAll(AppColors.goldSand),
-        foregroundColor: WidgetStatePropertyAll(AppColors.papyrusCream),
+        foregroundColor: WidgetStatePropertyAll(Colors.black),
+        shape: WidgetStatePropertyAll(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(5.0),
+            ),
+          ),
+        ),
       ),
     ),
     iconTheme: const IconThemeData(color: AppColors.terracotta),
