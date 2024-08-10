@@ -1,0 +1,22 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "ai-tourism-f8513",
+          "appId": "1:599714678150:android:6424a9d7f420cb9c379807",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "ai-tourism-f8513",
+          "configurations": {
+            "android": "1:599714678150:android:6424a9d7f420cb9c379807",
+            "ios": "1:599714678150:ios:f3837ad67e652ba7379807"
+          }
+        }
+      }
+    }
+  }
+}
