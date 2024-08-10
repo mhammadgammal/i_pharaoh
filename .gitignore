@@ -41,3 +41,6 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+/assets/images/on_boarding/on_boarding_1.png
+/assets/images/on_boarding/on_boarding_2.png
+/assets/images/on_boarding/on_boarding_3.png
