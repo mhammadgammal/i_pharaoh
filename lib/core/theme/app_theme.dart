@@ -13,19 +13,33 @@ class AppTheme {
         height: 50.0,
         buttonColor: AppColors.goldSand,
         textTheme: ButtonTextTheme.normal),
+    elevatedButtonTheme: const ElevatedButtonThemeData(
+      style: ButtonStyle(
+        backgroundColor: WidgetStatePropertyAll(AppColors.goldSand),
+        foregroundColor: WidgetStatePropertyAll(Colors.black),
+        shape: WidgetStatePropertyAll(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(5.0),
+            ),
+          ),
+        ),
+      ),
+    ),
     iconTheme: const IconThemeData(color: AppColors.terracotta),
     textTheme: TextTheme(
       bodyLarge: GoogleFonts.montserrat(
         fontSize: 20,
-        color: AppColors.papyrusCream,
+        color: Colors.white,
       ),
       bodyMedium: GoogleFonts.montserrat(
-        fontSize: 15,
-        color: AppColors.papyrusCream,
+        fontSize: 18.0,
+        fontWeight: FontWeight.bold,
+        color: Colors.white,
       ),
       bodySmall: GoogleFonts.montserrat(
         fontSize: 10,
-        color: AppColors.papyrusCream,
+        color: Colors.white,
       ),
     ),
   );
