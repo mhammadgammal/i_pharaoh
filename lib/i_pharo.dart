@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:i_pharaoh/core/router/app_router.dart';
+import 'package:i_pharaoh/core/router/router_helper.dart';
 import 'package:i_pharaoh/core/theme/app_theme.dart';
-import 'package:i_pharaoh/features/boarding/presentation/on_boarding_screen.dart';
 
 class IPharo extends StatelessWidget {
   const IPharo({super.key});
@@ -12,7 +13,8 @@ class IPharo extends StatelessWidget {
       title: 'IPharo',
       theme: AppTheme.lightTheme,
       themeMode: ThemeMode.light,
-      home: OnBoardingScreen(),
+      initialRoute: RouterHelper.boarding,
+      routes: AppRouter.generateRoute,
     );
   }
 }
