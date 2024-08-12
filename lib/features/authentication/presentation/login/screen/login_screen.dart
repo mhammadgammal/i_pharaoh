@@ -23,7 +23,7 @@ class LoginScreen extends StatelessWidget {
                     focusNode: cubit.emailNode,
                     inputType: TextInputType.emailAddress,
                     fieldLabel: 'Email',
-                    icon: Icon(Icons.email_outlined),
+                    icon: const Icon(Icons.email_outlined),
                     onSubmit: (_) => cubit.passwordNode.requestFocus(),
                     validate: null),
                 DefaultFormFiled(
@@ -34,11 +34,11 @@ class LoginScreen extends StatelessWidget {
                     obSecure: true,
                     suffixIcon: IconButton(
                         onPressed: () {},
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.visibility_off,
                         )),
                     fieldLabel: 'Password',
-                    icon: Icon(Icons.lock_outlined),
+                    icon: const Icon(Icons.lock_outlined),
                     onSubmit: (_) => cubit.signIn(),
                     validate: null),
                 ElevatedButton(

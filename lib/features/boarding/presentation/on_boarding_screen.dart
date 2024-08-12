@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:i_pharaoh/core/router/app_navigator.dart';
 import 'package:i_pharaoh/core/theme/app_images.dart';
@@ -28,8 +30,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   Widget build(BuildContext context) {
     double width = ScreenUtils.getScreenWidth(context);
     double height = ScreenUtils.getScreenHeight(context);
-    print('Screen Width: $width');
-    print('Screen Height: $height');
+    log('Screen Width: $width');
+    log('Screen Height: $height');
     return Scaffold(
       body: Stack(
         alignment: AlignmentDirectional.bottomCenter,
@@ -74,10 +76,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             child: ElevatedButton(
               onPressed: () async {
                 if (isLast) {
-                  print('last');
+                  log('last');
                   AppNavigator.navigateToLogin(context);
                 } else {
-                  print('trying to get next page');
+                  log('trying to get next page');
                   await widget.pageController.nextPage(
                     duration: const Duration(milliseconds: 100),
                     curve: const ElasticInCurve(),

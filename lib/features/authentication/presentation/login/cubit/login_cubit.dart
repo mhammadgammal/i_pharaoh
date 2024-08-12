@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:i_pharaoh/core/base_use_case/base_parameter.dart';
@@ -23,10 +25,10 @@ class LoginCubit extends Cubit<LoginState> {
         email: emailController.text, password: passwordController.text));
 
     result.fold((user) {
-      print(user.email);
+      log(user.email);
       emit(LoginSuccessState());
     }, (err) {
-      print('Error Authenticating: $err');
+      log('Error Authenticating: $err');
       emit(LoginFailureState());
     });
   }
