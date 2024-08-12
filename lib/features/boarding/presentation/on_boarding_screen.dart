@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:i_pharaoh/core/router/app_navigator.dart';
 import 'package:i_pharaoh/core/theme/app_images.dart';
 import 'package:i_pharaoh/core/utils/screen_util/screen_utils.dart';
 
@@ -74,6 +75,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               onPressed: () async {
                 if (isLast) {
                   print('last');
+                  AppNavigator.navigateToLogin(context);
                 } else {
                   print('trying to get next page');
                   await widget.pageController.nextPage(
