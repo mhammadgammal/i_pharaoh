@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="i_pharaoh"
+        android:label="@string/appName"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/i_pharo_icon">
         <activity
             android:name=".MainActivity"
             android:exported="true"
