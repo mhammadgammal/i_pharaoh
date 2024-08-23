@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:i_pharaoh/core/router/app_navigator.dart';
 import 'package:i_pharaoh/core/theme/app_images.dart';
+import 'package:i_pharaoh/core/theme/app_strings.dart';
 import 'package:i_pharaoh/core/utils/screen_util/screen_utils.dart';
 
 class OnBoardingScreen extends StatefulWidget {
@@ -10,12 +11,10 @@ class OnBoardingScreen extends StatefulWidget {
 
   final PageController pageController = PageController();
   final List<(String, String)> pages = [
-    (AppImages.onBoarding1, 'Coming to visit one of the Egyptian Landmarks ?'),
-    (AppImages.onBoarding2, 'Need information about specific artifact ?'),
+    (AppImages.onBoarding1, AppStrings.onBoardingText1),
+    (AppImages.onBoarding2, AppStrings.onBoardingText2),
     (
-      AppImages.onBoarding3,
-      'Don’t worry all you need is to scan it with your phone'
-    ),
+      AppImages.onBoarding3, AppStrings.onBoardingText3),
   ];
 
   @override
