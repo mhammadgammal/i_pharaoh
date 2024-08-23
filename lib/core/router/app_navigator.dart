@@ -10,4 +10,7 @@ abstract class AppNavigator {
 
   static Future<dynamic> navigateToSignUp(context) =>
       Navigator.pushNamed(context, RouterHelper.signUp);
+
+  static Future<dynamic> navigateToHome(BuildContext context) =>
+      Navigator.pushReplacementNamed(context, RouterHelper.home);
 }
