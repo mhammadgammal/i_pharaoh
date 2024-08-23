@@ -15,11 +15,11 @@ class DefaultFormFiled extends StatefulWidget {
     this.suffixIcon,
     this.initialValue,
     this.maxLines,
-    this.labelColor = AppColors.terracotta,
+    this.labelColor = AppColors.papyrusCream,
     this.iconColor = AppColors.terracotta,
-    this.textFieldTextColor = Colors.black,
+    this.textFieldTextColor = AppColors.papyrusCream,
     this.onChanged,
-    this.cursorColor = Colors.deepPurple,
+    this.cursorColor = AppColors.goldSand,
     this.autoFocus = false,
     this.focusNode,
     this.onSubmit,
@@ -56,10 +56,16 @@ class _DefaultFormFiledState extends State<DefaultFormFiled> {
       focusNode: widget.focusNode,
       controller: widget.controller,
       keyboardType: widget.inputType,
-      style: TextStyle(color: widget.textFieldTextColor),
+      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+          color: widget.textFieldTextColor,
+          fontSize: 20.0,
+          fontWeight: FontWeight.w700),
       decoration: InputDecoration(
         labelText: widget.fieldLabel,
-        labelStyle: TextStyle(color: widget.labelColor),
+        labelStyle: Theme.of(context)
+            .textTheme
+            .bodyMedium
+            ?.copyWith(color: widget.labelColor, fontWeight: FontWeight.bold),
         prefixIcon: widget.icon,
         suffixIcon: widget.suffixIcon,
         iconColor: widget.iconColor,
