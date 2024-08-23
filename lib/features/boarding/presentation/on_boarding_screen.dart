@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:i_pharaoh/core/router/app_navigator.dart';
+import 'package:i_pharaoh/core/theme/app_colors.dart';
 import 'package:i_pharaoh/core/theme/app_images.dart';
 import 'package:i_pharaoh/core/theme/app_strings.dart';
 import 'package:i_pharaoh/core/utils/screen_util/screen_utils.dart';
@@ -13,8 +14,7 @@ class OnBoardingScreen extends StatefulWidget {
   final List<(String, String)> pages = [
     (AppImages.onBoarding1, AppStrings.onBoardingText1),
     (AppImages.onBoarding2, AppStrings.onBoardingText2),
-    (
-      AppImages.onBoarding3, AppStrings.onBoardingText3),
+    (AppImages.onBoarding3, AppStrings.onBoardingText3),
   ];
 
   @override
@@ -45,27 +45,26 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 currentPage = value;
               });
             },
-            itemBuilder: (context, index) => Stack(
+            itemBuilder: (context, index) => Container(
               alignment: AlignmentDirectional.bottomEnd,
-              children: [
-                Image.asset(
-                  widget.pages[index].$1,
-                  width: ScreenUtils.getScreenWidth(context),
-                  height: ScreenUtils.getScreenHeight(context),
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage(
+                        widget.pages[index].$1,
+                      ),
+                      fit: BoxFit.fitWidth)),
+              child: Padding(
+                padding: EdgeInsetsDirectional.only(
+                  bottom: 60.0,
+                  start: width * 0.1,
+                  end: width * 0.1,
                 ),
-                Padding(
-                  padding: EdgeInsetsDirectional.only(
-                    bottom: 60.0,
-                    start: width * 0.1,
-                    end: width * 0.1,
-                  ),
-                  child: Text(
-                    style: Theme.of(context).textTheme.bodyMedium,
-                    widget.pages[index].$2,
-                    textAlign: TextAlign.center,
-                  ),
+                child: Text(
+                  style: Theme.of(context).textTheme.bodyMedium,
+                  widget.pages[index].$2,
+                  textAlign: TextAlign.center,
                 ),
-              ],
+              ),
             ),
           ),
           Container(
@@ -89,8 +88,11 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 isLast ? 'Get Started' : 'Next',
                 style: Theme.of(context)
                     .textTheme
-                    .bodySmall
-                    ?.copyWith(fontSize: 17.0, fontWeight: FontWeight.bold),
+                    .bodySmall?.copyWith(
+                      fontSize: 17.0,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.papyrusCream,
+                    ),
               ),
             ),
           ),
