@@ -1,7 +1,7 @@
 import 'dart:developer';
 
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:i_pharaoh/core/base_use_case/base_parameter.dart';
 import 'package:i_pharaoh/features/authentication/domain/use_case/sign_in_use_case.dart';
 
@@ -9,6 +9,7 @@ part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   final SignInUseCase _signInUseCase;
+
   LoginCubit(this._signInUseCase) : super(LoginInitial());
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -18,6 +19,8 @@ class LoginCubit extends Cubit<LoginState> {
 
   final FocusNode emailNode = FocusNode();
   final FocusNode passwordNode = FocusNode();
+
+  bool isSecured = true;
 
   Future<void> signIn() async {
     emit(LoginLoading());
@@ -32,4 +35,21 @@ class LoginCubit extends Cubit<LoginState> {
       emit(LoginFailureState());
     });
   }
+
+  void onPasswordVisibilityChanged() {
+    isSecured = !isSecured;
+    emit(PasswordVisibilityChanged());
+  }
+
+  String? validateEmail(String? value) => value == null || value.isEmpty
+      ? 'Email shouldn\'t be empty'
+      : !value.contains('@')
+          ? 'email should contains "@"'
+          : null;
+
+  String? validatePassword(String? value) => value == null || value.isEmpty
+      ? 'Password shouldn\'t be empty'
+      : value.length < 6
+          ? 'Password should at least be 6 characters'
+          : null;
 }
