@@ -13,4 +13,8 @@ abstract class AppStrings {
   static const String password = 'Password';
   static const String signIn = 'Sign In';
   static const String loginError = 'Error Credentials';
+
+  // Pick Photo Strings
+  static const String openCamera = 'Open Camera';
+  static const String pickPhoto = 'Pick Photo';
 }

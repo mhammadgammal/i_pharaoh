@@ -75,7 +75,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               onPressed: () async {
                 if (isLast) {
                   log('last');
-                  AppNavigator.navigateToLogin(context);
+                  AppNavigator.navigateReplacementToLogin(context);
                 } else {
                   log('trying to get next page');
                   await widget.pageController.nextPage(
@@ -91,7 +91,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     .bodySmall?.copyWith(
                       fontSize: 17.0,
                       fontWeight: FontWeight.bold,
-                      color: AppColors.papyrusCream,
                     ),
               ),
             ),

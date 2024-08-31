@@ -13,7 +13,7 @@ class IPharo extends StatelessWidget {
       title: 'IPharo',
       theme: AppTheme.lightTheme,
       themeMode: ThemeMode.light,
-      initialRoute: RouterHelper.boarding,
+      initialRoute: RouterHelper.camera,
       routes: AppRouter.generateRoute,
     );
   }

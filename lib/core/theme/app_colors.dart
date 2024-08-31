@@ -15,4 +15,7 @@ abstract class AppColors {
 
   // Lotus Green (#81B622)
   static const Color lotusGreen = Color(0xFF81B622);
+
+  //rgba(217, 217, 217, 0.25)
+  static const Color lightGrey = Color.fromRGBO(217, 217, 217, 0.25);
 }

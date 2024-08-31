@@ -28,7 +28,6 @@ class AuthenticationButton extends StatelessWidget {
               child: Text(
                 title,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: AppColors.papyrusCream,
                     fontSize: 25.0,
                     fontWeight: FontWeight.bold),
               ),

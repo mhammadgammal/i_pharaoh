@@ -16,7 +16,7 @@ class AppTheme {
     elevatedButtonTheme: const ElevatedButtonThemeData(
       style: ButtonStyle(
         backgroundColor: WidgetStatePropertyAll(AppColors.goldSand),
-        foregroundColor: WidgetStatePropertyAll(Colors.black),
+        foregroundColor: WidgetStatePropertyAll(AppColors.papyrusCream),
         shape: WidgetStatePropertyAll(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
