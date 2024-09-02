@@ -13,3 +13,8 @@ void main() async {
   Bloc.observer = IPharoeBlocObserver();
   runApp(const IPharo());
 }
+
+
+
+
+
