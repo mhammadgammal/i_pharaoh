@@ -22,10 +22,7 @@ class LoginBody extends StatelessWidget {
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsetsDirectional.only(
-                start: 20.0,
-                end: 20.0,
-                top: 150.0
-              ),
+                  start: 20.0, end: 20.0, top: 150.0),
               child: Column(
                 children: [
                   Text(
@@ -134,7 +131,9 @@ class LoginBody extends StatelessWidget {
                           style: Theme.of(context)
                               .textTheme
                               .bodyMedium
-                              ?.copyWith(fontSize: 15.0),
+                              ?.copyWith(
+                                  fontSize: 15.0,
+                                  decoration: TextDecoration.underline),
                         ),
                       )
                     ],
