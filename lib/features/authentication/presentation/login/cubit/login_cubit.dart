@@ -49,7 +49,7 @@ class LoginCubit extends Cubit<LoginState> {
 
   String? validatePassword(String? value) => value == null || value.isEmpty
       ? 'Password shouldn\'t be empty'
-      : value.length < 6
-          ? 'Password should at least be 6 characters'
+      : value.length < 8
+          ? 'Password should at least be 8 characters'
           : null;
 }
