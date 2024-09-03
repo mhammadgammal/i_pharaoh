@@ -17,4 +17,20 @@ abstract class AppStrings {
   // Pick Photo Strings
   static const String openCamera = 'Open Camera';
   static const String pickPhoto = 'Pick Photo';
+
+  // register Strings
+  static const String dontHaveAcc = 'Don\'t have an account ?';
+  static const String alreadyHaveAcc = 'Already have an account ?';
+  static const String registerNow = 'Register Now';
+  static const String loginNow = 'Login Now';
+
+  static const String register =
+      'Register to explore beauty of Egyptian Landmarks';
+
+  static const String firstName = 'First Name';
+  static const String lastName = 'Last Name';
+  static const String phone = 'Phone Number';
+  static const String country = 'Country';
+  static const String confirmPassword = 'Confirm Password';
+  static const String signUp = 'Sign Up';
 }
