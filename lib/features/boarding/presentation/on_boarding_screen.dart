@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:i_pharaoh/core/router/app_navigator.dart';
-import 'package:i_pharaoh/core/theme/app_colors.dart';
 import 'package:i_pharaoh/core/theme/app_images.dart';
 import 'package:i_pharaoh/core/theme/app_strings.dart';
 import 'package:i_pharaoh/core/utils/screen_util/screen_utils.dart';
