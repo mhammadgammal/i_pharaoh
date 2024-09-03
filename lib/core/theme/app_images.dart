@@ -11,5 +11,7 @@ abstract class AppImages {
 
   // LOGIN BACKGROUND
   static const loginBackground = 'assets/images/login/login_background.png';
+
+  static const String googleIc = 'assets/images/login/google_ic.png';
 // REGISTER BACKGROUND
 }
