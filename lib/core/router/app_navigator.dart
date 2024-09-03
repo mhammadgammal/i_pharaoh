@@ -21,5 +21,5 @@ abstract class AppNavigator {
       Navigator.pushReplacementNamed(context, RouterHelper.home);
 
   static navigateToCamera(BuildContext context) =>
-      Navigator.pushNamed(context, RouterHelper.camera);
+      Navigator.pushReplacementNamed(context, RouterHelper.camera);
 }
