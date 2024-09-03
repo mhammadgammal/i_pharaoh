@@ -7,8 +7,6 @@ import 'package:i_pharaoh/core/widgets/error_dialogue.dart';
 import 'package:i_pharaoh/features/authentication/presentation/login/cubit/login_cubit.dart';
 import 'package:i_pharaoh/features/authentication/presentation/login/screen/login_body.dart';
 
-// import '../../../../../core/di/di.dart';
-
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
@@ -17,7 +15,7 @@ class LoginScreen extends StatelessWidget {
     return BlocListener<LoginCubit, LoginState>(
       listener: (context, state) {
         if (state is LoginSuccessState) {
-          AppNavigator.navigateToHome(context);
+          AppNavigator.navigateToCamera(context);
         } else if (state is LoginFailureState) {
           showDialog(
               context: context,
