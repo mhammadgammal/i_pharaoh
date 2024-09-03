@@ -19,7 +19,7 @@ abstract class AppRouter {
           child: const LoginScreen(),
         ),
     RouterHelper.signUp: (_) => BlocProvider(
-          create: (_) => RegisterCubit(),
+          create: (_) => RegisterCubit(sl.get()),
           child: const RegisterScreen(),
         ),
     RouterHelper.camera: (_) => BlocProvider(
