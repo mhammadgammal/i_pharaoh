@@ -21,8 +21,11 @@ class LoginBody extends StatelessWidget {
         return Form(
           child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsetsDirectional.symmetric(
-                  vertical: 150.0, horizontal: 20.0),
+              padding: const EdgeInsetsDirectional.only(
+                start: 20.0,
+                end: 20.0,
+                top: 150.0
+              ),
               child: Column(
                 children: [
                   Text(
