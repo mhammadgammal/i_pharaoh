@@ -8,6 +8,9 @@ abstract class AppNavigator {
   static Future<dynamic> navigateToLogin(context) =>
       Navigator.pushNamed(context, RouterHelper.signIn);
 
+  static Future<dynamic> navigateAndReplaceToSignUp(context) =>
+      Navigator.pushReplacementNamed(context, RouterHelper.signUp);
+
   static Future<dynamic> navigateReplacementToLogin(context) =>
       Navigator.pushReplacementNamed(context, RouterHelper.signIn);
 
@@ -17,5 +20,6 @@ abstract class AppNavigator {
   static Future<dynamic> navigateToHome(BuildContext context) =>
       Navigator.pushReplacementNamed(context, RouterHelper.home);
 
-  static navigateToCamera(BuildContext context) => Navigator.pushNamed(context, RouterHelper.camera);
+  static navigateToCamera(BuildContext context) =>
+      Navigator.pushNamed(context, RouterHelper.camera);
 }

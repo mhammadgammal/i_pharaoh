@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:i_pharaoh/core/router/router_helper.dart';
 import 'package:i_pharaoh/features/authentication/presentation/login/cubit/login_cubit.dart';
 import 'package:i_pharaoh/features/authentication/presentation/login/screen/login_screen.dart';
+import 'package:i_pharaoh/features/authentication/presentation/register/cubit/register_cubit.dart';
+import 'package:i_pharaoh/features/authentication/presentation/register/screen/register_screen.dart';
 import 'package:i_pharaoh/features/boarding/presentation/on_boarding_screen.dart';
 import 'package:i_pharaoh/features/pick_photo/presentation/cubit/pick_photo_cubit.dart';
 import 'package:i_pharaoh/features/pick_photo/presentation/screen/take_pic_screen.dart';
@@ -15,6 +17,10 @@ abstract class AppRouter {
     RouterHelper.signIn: (_) => BlocProvider(
           create: (_) => LoginCubit(sl.get()),
           child: const LoginScreen(),
+        ),
+    RouterHelper.signUp: (_) => BlocProvider(
+          create: (_) => RegisterCubit(),
+          child: const RegisterScreen(),
         ),
     RouterHelper.camera: (_) => BlocProvider(
           create: (context) => PickPhotoCubit()..requestCameraPermission(),
