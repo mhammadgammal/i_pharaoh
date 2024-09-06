@@ -226,7 +226,11 @@ class RegisterScreen extends StatelessWidget {
           ),
         ));
       },
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is SignUpSuccessState){
+          AppNavigator.navigateToCamera(context);
+        }
+      },
     );
   }
 }
