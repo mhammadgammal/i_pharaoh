@@ -50,6 +50,8 @@ dependencies:
   path: ^1.9.0
   image_picker: ^1.1.2
   permission_handler: ^11.3.1
+  phone_form_field: ^9.2.5
+  # flutter_native_splash: ^2.4.1
 
 
 dev_dependencies:
@@ -62,10 +64,15 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^3.0.0
-
+  flutter_native_splash: ^2.4.1
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
+flutter_native_splash:
+  image: assets/images/splash/i_pharo_icon.png
+  color: "#FAFF00"
+  android: true
+  ios: true
 # The following section is specific to Flutter packages.
 flutter:
 
@@ -79,6 +86,7 @@ flutter:
     - assets/images/login/
     - assets/images/logo/
     - assets/images/on_boarding/
+    - assets/images/splash/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
