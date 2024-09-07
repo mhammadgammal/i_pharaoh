@@ -2,6 +2,7 @@
     <application
         android:label="@string/appName"
         android:name="${applicationName}"
+        android:supportsRtl = "true"
         android:icon="@mipmap/i_pharo_icon">
         <activity
             android:name=".MainActivity"

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:i_pharaoh/core/theme/app_colors.dart';
+import 'package:i_pharaoh/core/utils/localization/app_localization.dart';
+import 'package:i_pharaoh/core/utils/localization/app_strings.dart';
 
 import '../../../../core/theme/app_images.dart';
 
@@ -35,7 +37,9 @@ class ContinueWithGoogle extends StatelessWidget {
             ),
           ),
           Text(
-            '    Continue with Google',
+            AppLocalizations.of(context).translate(
+              AppStrings.continueWithGoogle
+            ),
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   fontSize: 17.0,
                   fontWeight: FontWeight.bold,

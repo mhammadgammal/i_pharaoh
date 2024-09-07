@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:i_pharaoh/core/router/app_navigator.dart';
 import 'package:i_pharaoh/core/theme/app_images.dart';
-import 'package:i_pharaoh/core/theme/app_strings.dart';
+import 'package:i_pharaoh/core/utils/localization/app_localization.dart';
+import 'package:i_pharaoh/core/utils/localization/app_strings.dart';
 import 'package:i_pharaoh/core/utils/screen_util/screen_utils.dart';
 import 'package:i_pharaoh/core/widgets/default_form_field.dart';
 import 'package:i_pharaoh/core/widgets/phone_number_input_widget.dart';
@@ -35,6 +36,7 @@ class RegisterScreen extends StatelessWidget {
                 fit: BoxFit.fitWidth),
           ),
           child: Form(
+            key: cubit.formKey,
             child: SingleChildScrollView(
               physics: const AlwaysScrollableScrollPhysics(),
               child: Column(
@@ -45,7 +47,7 @@ class RegisterScreen extends StatelessWidget {
                     height: ScreenUtils.getScreenHeight(context) * 0.08,
                   ),
                   Text(
-                    AppStrings.register,
+                    AppLocalizations.of(context).translate(AppStrings.registerQuote),
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         fontSize: 25.0,
                         color: Colors.white,
@@ -60,13 +62,15 @@ class RegisterScreen extends StatelessWidget {
                           child: DefaultFormFiled(
                               controller: cubit.firstNameController,
                               inputType: TextInputType.name,
-                              fieldLabel: AppStrings.firstName,
+                              fieldLabel: AppLocalizations.of(context)
+                                  .translate(AppStrings.firstName),
                               icon: const Icon(Icons.person,
                                   color: AppColors.papyrusCream),
                               focusNode: cubit.firstNameNode,
                               onSubmit: (_) =>
                                   cubit.lastNameNode.requestFocus(),
-                              validate: cubit.validateFirstName)),
+                              validate: (value) =>
+                                  cubit.validateFirstName(context, value))),
                       const SizedBox(
                         width: 10.0,
                       ),
@@ -74,12 +78,14 @@ class RegisterScreen extends StatelessWidget {
                           child: DefaultFormFiled(
                               controller: cubit.lastNameController,
                               inputType: TextInputType.name,
-                              fieldLabel: AppStrings.lastName,
+                              fieldLabel: AppLocalizations.of(context)
+                                  .translate(AppStrings.lastName),
                               icon: const Icon(Icons.person,
                                   color: AppColors.papyrusCream),
                               focusNode: cubit.lastNameNode,
                               onSubmit: (_) => cubit.phoneNode.requestFocus(),
-                              validate: cubit.validateLastName)),
+                              validate: (value) =>
+                                  cubit.validateLastName(context, value))),
                     ],
                   ),
                   const SizedBox(
@@ -99,13 +105,14 @@ class RegisterScreen extends StatelessWidget {
                       controller: cubit.emailController,
                       focusNode: cubit.emailNode,
                       inputType: TextInputType.emailAddress,
-                      fieldLabel: AppStrings.emailAddress,
+                      fieldLabel: AppLocalizations.of(context)
+                          .translate(AppStrings.emailAddress),
                       icon: const Icon(
                         Icons.email_outlined,
                         color: AppColors.papyrusCream,
                       ),
                       onSubmit: (_) => cubit.passwordNode.requestFocus(),
-                      validate: cubit.validateEmail),
+                      validate: (value) => cubit.validateEmail(context, value)),
                   const SizedBox(
                     height: 30.0,
                   ),
@@ -124,13 +131,15 @@ class RegisterScreen extends StatelessWidget {
                           color: AppColors.papyrusCream,
                         ),
                       ),
-                      fieldLabel: AppStrings.password,
+                      fieldLabel: AppLocalizations.of(context)
+                          .translate(AppStrings.password),
                       icon: const Icon(
                         Icons.lock_outlined,
                         color: AppColors.papyrusCream,
                       ),
                       onSubmit: (_) => cubit.confirmPasswordNode.requestFocus(),
-                      validate: cubit.validatePassword),
+                      validate: (value) =>
+                          cubit.validatePassword(context, value)),
                   const SizedBox(
                     height: 30.0,
                   ),
@@ -149,20 +158,27 @@ class RegisterScreen extends StatelessWidget {
                           color: AppColors.papyrusCream,
                         ),
                       ),
-                      fieldLabel: AppStrings.confirmPassword,
+                      fieldLabel: AppLocalizations.of(context)
+                          .translate(AppStrings.confirmPassword),
                       icon: const Icon(
                         Icons.lock_outlined,
                         color: AppColors.papyrusCream,
                       ),
                       onSubmit: (_) => cubit.signUp(),
-                      validate: cubit.validateConfirmPassword),
+                      validate: (value) =>
+                          cubit.validateConfirmPassword(context, value)),
                   const SizedBox(
                     height: 50.0,
                   ),
                   AuthenticationButton(
                     isLoading: false,
-                    title: AppStrings.signUp,
-                    onPressed: () => cubit.signUp(),
+                    title: AppLocalizations.of(context)
+                        .translate(AppStrings.signUp),
+                    onPressed: () {
+                      if (cubit.formKey.currentState!.validate()) {
+                        cubit.signUp();
+                      }
+                    },
                   ),
                   const SizedBox(
                     height: 10.0,
@@ -177,7 +193,8 @@ class RegisterScreen extends StatelessWidget {
                         ),
                       )),
                       Text(
-                        ' OR ',
+                        AppLocalizations.of(context)
+                            .translate(AppStrings.or),
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                               fontSize: 17.0,
                             ),
@@ -202,7 +219,8 @@ class RegisterScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        AppStrings.alreadyHaveAcc,
+                        AppLocalizations.of(context)
+                            .translate(AppStrings.alreadyHaveAcc),
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                             fontSize: 15.0,
                             decoration: TextDecoration.underline),
@@ -211,7 +229,8 @@ class RegisterScreen extends StatelessWidget {
                         onPressed: () =>
                             AppNavigator.navigateReplacementToLogin(context),
                         child: Text(
-                          AppStrings.loginNow,
+                          AppLocalizations.of(context)
+                              .translate(AppStrings.loginNow),
                           style: Theme.of(context)
                               .textTheme
                               .bodyMedium
@@ -227,7 +246,7 @@ class RegisterScreen extends StatelessWidget {
         ));
       },
       listener: (context, state) {
-        if (state is SignUpSuccessState){
+        if (state is SignUpSuccessState) {
           AppNavigator.navigateToCamera(context);
         }
       },

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:i_pharaoh/core/theme/app_colors.dart';
+import 'package:i_pharaoh/core/utils/localization/app_localization.dart';
+import 'package:i_pharaoh/core/utils/localization/app_strings.dart';
 import 'package:phone_form_field/phone_form_field.dart';
 
 class PhoneNumberInputWidget extends StatelessWidget {
@@ -32,6 +34,7 @@ class PhoneNumberInputWidget extends StatelessWidget {
       validator: _getValidator(context),
       autovalidateMode: AutovalidateMode.disabled,
       onEditingComplete: onEditComplete,
+      onSubmitted: onSubmitted,
       decoration: const InputDecoration(
         hintText: '123-456-7890',
         border: OutlineInputBorder(
@@ -58,7 +61,12 @@ class PhoneNumberInputWidget extends StatelessWidget {
 
   PhoneNumberInputValidator? _getValidator(BuildContext context) {
     List<PhoneNumberInputValidator> validators = [];
-    validators.add(PhoneValidator.validMobile(context));
+    validators.addAll([
+      PhoneValidator.required(context,
+          errorText: AppLocalizations.of(context)
+              .translate(AppStrings.phoneNumberIsRequired)),
+      PhoneValidator.validMobile(context)
+    ]);
     return validators.isNotEmpty ? PhoneValidator.compose(validators) : null;
   }
 }

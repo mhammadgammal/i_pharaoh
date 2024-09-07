@@ -3,18 +3,14 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:i_pharaoh/core/router/app_navigator.dart';
 import 'package:i_pharaoh/core/theme/app_images.dart';
-import 'package:i_pharaoh/core/theme/app_strings.dart';
+import 'package:i_pharaoh/core/utils/localization/app_localization.dart';
+import 'package:i_pharaoh/core/utils/localization/app_strings.dart';
 import 'package:i_pharaoh/core/utils/screen_util/screen_utils.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   OnBoardingScreen({super.key});
 
   final PageController pageController = PageController();
-  final List<(String, String)> pages = [
-    (AppImages.onBoarding1, AppStrings.onBoardingText1),
-    (AppImages.onBoarding2, AppStrings.onBoardingText2),
-    (AppImages.onBoarding3, AppStrings.onBoardingText3),
-  ];
 
   @override
   State<OnBoardingScreen> createState() => _OnBoardingScreenState();
@@ -30,17 +26,31 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     double height = ScreenUtils.getScreenHeight(context);
     log('Screen Width: $width');
     log('Screen Height: $height');
+    final List<(String, String)> pages = [
+      (
+        AppImages.onBoarding1,
+        AppLocalizations.of(context).translate(AppStrings.onBoardingText1)
+      ),
+      (
+        AppImages.onBoarding2,
+        AppLocalizations.of(context).translate(AppStrings.onBoardingText2)
+      ),
+      (
+        AppImages.onBoarding3,
+        AppLocalizations.of(context).translate(AppStrings.onBoardingText3)
+      ),
+    ];
     return Scaffold(
       body: Stack(
         alignment: AlignmentDirectional.bottomCenter,
         children: [
           PageView.builder(
             controller: widget.pageController,
-            itemCount: widget.pages.length,
+            itemCount: pages.length,
             physics: const ClampingScrollPhysics(),
             onPageChanged: (value) {
               setState(() {
-                isLast = value == (widget.pages.length - 1);
+                isLast = value == (pages.length - 1);
                 currentPage = value;
               });
             },
@@ -49,7 +59,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               decoration: BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage(
-                        widget.pages[index].$1,
+                        pages[index].$1,
                       ),
                       fit: BoxFit.fitWidth)),
               child: Padding(
@@ -60,7 +70,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 ),
                 child: Text(
                   style: Theme.of(context).textTheme.bodyMedium,
-                  widget.pages[index].$2,
+                  pages[index].$2,
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -84,10 +94,11 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 }
               },
               child: Text(
-                isLast ? 'Get Started' : 'Next',
-                style: Theme.of(context)
-                    .textTheme
-                    .bodySmall?.copyWith(
+                isLast
+                    ? AppLocalizations.of(context)
+                        .translate(AppStrings.getStarted)
+                    : AppLocalizations.of(context).translate(AppStrings.next),
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       fontSize: 17.0,
                       fontWeight: FontWeight.bold,
                     ),
