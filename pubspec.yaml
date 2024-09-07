@@ -51,6 +51,7 @@ dependencies:
   image_picker: ^1.1.2
   permission_handler: ^11.3.1
   phone_form_field: ^9.2.5
+  flutter_localization: ^0.2.1
   # flutter_native_splash: ^2.4.1
 
 
@@ -69,7 +70,7 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 
 flutter_native_splash:
-  image: assets/images/splash/i_pharo_icon.png
+  image: assets/images/splash/eye_ic.png
   color: "#FAFF00"
   android: true
   ios: true
