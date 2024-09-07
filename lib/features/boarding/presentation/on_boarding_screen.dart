@@ -5,6 +5,7 @@ import 'package:i_pharaoh/core/router/app_navigator.dart';
 import 'package:i_pharaoh/core/theme/app_images.dart';
 import 'package:i_pharaoh/core/utils/localization/app_localization.dart';
 import 'package:i_pharaoh/core/utils/localization/app_strings.dart';
+import 'package:i_pharaoh/core/utils/localization/localize_constants.dart';
 import 'package:i_pharaoh/core/utils/screen_util/screen_utils.dart';
 
 class OnBoardingScreen extends StatefulWidget {
@@ -55,7 +56,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               });
             },
             itemBuilder: (context, index) => Container(
-              alignment: AlignmentDirectional.bottomEnd,
+              alignment: LocalizeConstants.defaultLanguage == 'en'
+                  ? AlignmentDirectional.bottomEnd
+                  : AlignmentDirectional.bottomCenter,
               decoration: BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage(
@@ -69,7 +72,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   end: width * 0.1,
                 ),
                 child: Text(
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium
+                      ?.copyWith(fontSize: 20.0),
                   pages[index].$2,
                   textAlign: TextAlign.center,
                 ),
