@@ -211,7 +211,9 @@ class RegisterScreen extends StatelessWidget {
                   const SizedBox(
                     height: 15.0,
                   ),
-                  const ContinueWithGoogle(),
+                  ContinueWithGoogle(onPressed: () {
+                    
+                  },),
                   const SizedBox(
                     height: 15.0,
                   ),

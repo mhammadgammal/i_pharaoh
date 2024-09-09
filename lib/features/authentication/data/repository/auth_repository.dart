@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:i_pharaoh/core/di/di.dart';
@@ -25,7 +27,8 @@ class AuthRepository implements AuthRepositoryI {
   Future logout() async => sl<FirebaseAuth>().signOut();
 
   @override
-  Future<Either<UserDto, String>> signUp(UserDto user, String password) async {
+  Future<Either<UserDto, String>> signUpWithEmailAndPassword(
+      UserDto user, String password) async {
     var result = await createUserWithEmailAndPassword(user, password);
     late UserDto userDto;
     late String error;
@@ -37,5 +40,17 @@ class AuthRepository implements AuthRepositoryI {
       (e) => error = e,
     );
     return result.isLeft() ? Left(userDto) : Right(error);
+  }
+
+  @override
+  Future<Either<User, String>> signInWithGoogle() async{
+    var result = await authInWithGoogle();
+    late User user;
+    late String error;
+    result.fold(
+      (usr) => user = usr,
+      (e) => error = e,
+    );
+    return result.isLeft() ? Left(user) : Right(error);
   }
 }

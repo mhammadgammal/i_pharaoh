@@ -102,8 +102,7 @@ class LoginBody extends StatelessWidget {
                         ),
                       )),
                       Text(
-                        AppLocalizations.of(context)
-                            .translate(AppStrings.or),
+                        AppLocalizations.of(context).translate(AppStrings.or),
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                               fontSize: 17.0,
                             ),
@@ -120,7 +119,9 @@ class LoginBody extends StatelessWidget {
                   const SizedBox(
                     height: 15.0,
                   ),
-                  const ContinueWithGoogle(),
+                  ContinueWithGoogle(
+                    onPressed: cubit.signInWithGoogle,
+                  ),
                   const SizedBox(
                     height: 15.0,
                   ),

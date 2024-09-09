@@ -9,7 +9,7 @@ import 'i_pharo.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  init();
+  await init();
   Bloc.observer = IPharoeBlocObserver();
   runApp(const IPharo());
 }

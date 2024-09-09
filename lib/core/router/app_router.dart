@@ -15,7 +15,7 @@ abstract class AppRouter {
   static final Map<String, WidgetBuilder> generateRoute = {
     RouterHelper.boarding: (_) => OnBoardingScreen(),
     RouterHelper.signIn: (_) => BlocProvider(
-          create: (_) => LoginCubit(sl.get()),
+          create: (_) => LoginCubit(sl.get(), sl.get()),
           child: const LoginScreen(),
         ),
     RouterHelper.signUp: (_) => BlocProvider(

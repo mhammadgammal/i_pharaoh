@@ -6,13 +6,15 @@ import 'package:i_pharaoh/core/base_use_case/base_parameter.dart';
 import 'package:i_pharaoh/core/utils/localization/app_localization.dart';
 import 'package:i_pharaoh/core/utils/localization/app_strings.dart';
 import 'package:i_pharaoh/features/authentication/domain/use_case/sign_in_use_case.dart';
+import 'package:i_pharaoh/features/authentication/domain/use_case/sign_in_with_google_use_case.dart';
 
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   final SignInUseCase _signInUseCase;
-
-  LoginCubit(this._signInUseCase) : super(LoginInitial());
+  final SignInWithGoogleUseCase _signInWithGoogleUseCase;
+  LoginCubit(this._signInUseCase, this._signInWithGoogleUseCase)
+      : super(LoginInitial());
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -36,6 +38,15 @@ class LoginCubit extends Cubit<LoginState> {
       log('Error Authenticating: $err');
       emit(LoginFailureState());
     });
+  }
+
+  Future<void> signInWithGoogle() async {
+    emit(LoginLoading());
+
+    var authResult = await _signInWithGoogleUseCase.perform();
+
+    authResult.fold((user) => emit(LoginSuccessState()),
+        (err) => emit(LoginFailureState()));
   }
 
   void onPasswordVisibilityChanged() {

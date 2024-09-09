@@ -1,6 +1,9 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:i_pharaoh/core/di/di.dart';
+import 'package:i_pharaoh/core/helpers/cache/cache_helper.dart';
+import 'package:i_pharaoh/core/helpers/cache/cache_keys.dart';
 import 'package:i_pharaoh/core/router/app_navigator.dart';
 import 'package:i_pharaoh/core/theme/app_images.dart';
 import 'package:i_pharaoh/core/utils/localization/app_localization.dart';
@@ -90,6 +93,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               onPressed: () async {
                 if (isLast) {
                   log('last');
+                  sl<CacheHelper>().putBool(CacheKeys.firstTime, true);
                   AppNavigator.navigateReplacementToLogin(context);
                 } else {
                   log('trying to get next page');

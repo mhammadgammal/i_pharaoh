@@ -12,7 +12,7 @@ class SignUpUseCase
 
   @override
   Future<Either<UserModel, String>> perform(RegisterParameter parameter) async {
-    var result = await _authRepository.signUp(
+    var result = await _authRepository.signUpWithEmailAndPassword(
       UserDto(name: parameter.name, email: parameter.email),
       parameter.password,
     );

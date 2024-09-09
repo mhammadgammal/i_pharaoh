@@ -12,7 +12,20 @@
           "package_name": "com.support.aitourism"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "599714678150-v6qs17hdchmqtm86oimtjrskrs9p0g8g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.support.aitourism",
+            "certificate_hash": "4a86f4151d17a6c315bf93c806eab022dbbcec66"
+          }
+        },
+        {
+          "client_id": "599714678150-9ofvphn87gaak43657t3shf8u2snsb6g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAe1FxtMr2tIzMZlgfcth1X7ShRuWM8nQs"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "599714678150-9ofvphn87gaak43657t3shf8u2snsb6g.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "599714678150-54k1esnpvkokc55s0728bc85p0fdsgn4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.support.iPharaoh"
+              }
+            }
+          ]
         }
       }
     },
@@ -31,7 +56,20 @@
           "package_name": "com.support.i_pharaoh"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "599714678150-559rh91ajissb1nti8udsujlusq4ogfv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.support.i_pharaoh",
+            "certificate_hash": "4a86f4151d17a6c315bf93c806eab022dbbcec66"
+          }
+        },
+        {
+          "client_id": "599714678150-9ofvphn87gaak43657t3shf8u2snsb6g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAe1FxtMr2tIzMZlgfcth1X7ShRuWM8nQs"
@@ -39,7 +77,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "599714678150-9ofvphn87gaak43657t3shf8u2snsb6g.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "599714678150-54k1esnpvkokc55s0728bc85p0fdsgn4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.support.iPharaoh"
+              }
+            }
+          ]
         }
       }
     }

@@ -2,7 +2,7 @@ name: i_pharaoh
 description: "Mobile Application that aims to assisst tourists in their tours."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+# publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -52,6 +52,7 @@ dependencies:
   permission_handler: ^11.3.1
   phone_form_field: ^9.2.5
   flutter_localization: ^0.2.1
+  google_sign_in: ^6.2.1
   # flutter_native_splash: ^2.4.1
 
 

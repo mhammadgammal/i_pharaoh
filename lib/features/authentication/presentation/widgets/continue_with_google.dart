@@ -6,12 +6,13 @@ import 'package:i_pharaoh/core/utils/localization/app_strings.dart';
 import '../../../../core/theme/app_images.dart';
 
 class ContinueWithGoogle extends StatelessWidget {
-  const ContinueWithGoogle({super.key});
+  const ContinueWithGoogle({super.key, required this.onPressed});
 
+  final void Function() onPressed;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: onPressed,
       style: ButtonStyle(
           backgroundColor: const WidgetStatePropertyAll(Colors.transparent),
           shape: WidgetStatePropertyAll(
