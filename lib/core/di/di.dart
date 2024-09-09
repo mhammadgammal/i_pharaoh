@@ -1,5 +1,7 @@
+import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
+import 'package:i_pharaoh/core/helpers/api/api_client.dart';
 import 'package:i_pharaoh/core/utils/localization/app_localization.dart';
 import 'package:i_pharaoh/features/authentication/data/repository/auth_repository.dart';
 import 'package:i_pharaoh/features/authentication/domain/use_case/sign_in_use_case.dart';
@@ -13,6 +15,12 @@ final sl = GetIt.instance;
 Future<void> init() async {
   // region firebase auth
   sl.registerLazySingleton<FirebaseAuth>(() => FirebaseAuth.instance);
+  // #endregion
+
+  // #region api
+  sl.registerLazySingleton<Dio>(() => Dio());
+  sl.registerLazySingleton<ApiClient>(() => ApiClient(sl.get()));
+  // #endregion
 
   // #region localization
   sl.registerLazySingleton<AppLanguage>(() => AppLanguage());

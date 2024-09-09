@@ -84,6 +84,7 @@ class PickPhotoCubit extends Cubit<PickPhotoState> {
         // If the picture was taken, display it on a new screen.
         path = image.path;
         log(image.path);
+        emit(ImageTakenState());
       } catch (e) {
         // If an error occurs, log the error to the console.
         debugPrint(e.toString());
@@ -96,6 +97,7 @@ class PickPhotoCubit extends Cubit<PickPhotoState> {
       final image = await ImagePicker().pickImage(source: ImageSource.gallery);
       if (image == null) return;
       path = image.path;
+      emit(ImageTakenState());
     } on PlatformException catch (e) {
       debugPrint('Failed to pick image: $e');
     }
@@ -114,7 +116,6 @@ class PickPhotoCubit extends Cubit<PickPhotoState> {
                 if (isGranted) {
                   openCamera();
                 }
-                
               })
             : null;
   }

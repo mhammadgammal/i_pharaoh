@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:i_pharaoh/core/router/router_helper.dart';
@@ -8,6 +10,8 @@ import 'package:i_pharaoh/features/authentication/presentation/register/screen/r
 import 'package:i_pharaoh/features/boarding/presentation/on_boarding_screen.dart';
 import 'package:i_pharaoh/features/pick_photo/presentation/cubit/pick_photo_cubit.dart';
 import 'package:i_pharaoh/features/pick_photo/presentation/screen/take_pic_screen.dart';
+import 'package:i_pharaoh/features/show/presentation/cubit/show_cubit.dart';
+import 'package:i_pharaoh/features/show/presentation/screen/show_screen.dart';
 
 import '../di/di.dart';
 
@@ -25,6 +29,14 @@ abstract class AppRouter {
     RouterHelper.camera: (_) => BlocProvider(
           create: (context) => PickPhotoCubit()..requestCameraPermission(),
           child: const TakePicScreen(),
-        )
+        ),
+    RouterHelper.show: (context) {
+      final imgPath = ModalRoute.of(context)!.settings.arguments as String;
+      log('ShowScreen: imgPath: $imgPath');
+      return BlocProvider(
+        create: (_) => ShowCubit()..predictImg(imgPath),
+        child: const ShowScreen(),
+      );
+    },
   };
 }

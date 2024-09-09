@@ -22,4 +22,7 @@ abstract class AppNavigator {
 
   static navigateToCamera(BuildContext context) =>
       Navigator.pushReplacementNamed(context, RouterHelper.camera);
-}
+
+  static Future<dynamic> navigateToShow(BuildContext context, String imgPath) =>
+      Navigator.pushNamed(context, RouterHelper.show, arguments: imgPath);
+  }
