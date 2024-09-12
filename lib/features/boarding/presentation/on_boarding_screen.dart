@@ -93,7 +93,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               onPressed: () async {
                 if (isLast) {
                   log('last');
-                  sl<CacheHelper>().putBool(CacheKeys.firstTime, true);
+                  sl<CacheHelper>().putBool(CacheKeys.firstTime, false);
                   AppNavigator.navigateReplacementToLogin(context);
                 } else {
                   log('trying to get next page');

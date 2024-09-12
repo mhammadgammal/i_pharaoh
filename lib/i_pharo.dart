@@ -20,7 +20,7 @@ class IPharo extends StatelessWidget {
       title: 'IPharo',
       theme: AppTheme.lightTheme,
       themeMode: ThemeMode.light,
-      initialRoute: isFirstTime == true
+      initialRoute: isFirstTime == null
           ? RouterHelper.boarding
           : uid == null
               ? RouterHelper.signIn
