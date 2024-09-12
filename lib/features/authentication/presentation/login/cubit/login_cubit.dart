@@ -3,10 +3,14 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:i_pharaoh/core/base_use_case/base_parameter.dart';
+import 'package:i_pharaoh/core/helpers/cache/cache_helper.dart';
+import 'package:i_pharaoh/core/helpers/cache/cache_keys.dart';
 import 'package:i_pharaoh/core/utils/localization/app_localization.dart';
 import 'package:i_pharaoh/core/utils/localization/app_strings.dart';
 import 'package:i_pharaoh/features/authentication/domain/use_case/sign_in_use_case.dart';
 import 'package:i_pharaoh/features/authentication/domain/use_case/sign_in_with_google_use_case.dart';
+
+import '../../../../../core/di/di.dart';
 
 part 'login_state.dart';
 
@@ -41,12 +45,14 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   Future<void> signInWithGoogle() async {
-    emit(LoginLoading());
+    emit(GoogleLoginLoading());
 
     var authResult = await _signInWithGoogleUseCase.perform();
 
-    authResult.fold((user) => emit(LoginSuccessState()),
-        (err) => emit(LoginFailureState()));
+    authResult.fold((user) {
+      sl<CacheHelper>().putString(CacheKeys.uid, user.uid);
+      emit(LoginSuccessState());
+    }, (err) => emit(LoginFailureState()));
   }
 
   void onPasswordVisibilityChanged() {

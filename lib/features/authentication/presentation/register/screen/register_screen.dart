@@ -211,9 +211,10 @@ class RegisterScreen extends StatelessWidget {
                   const SizedBox(
                     height: 15.0,
                   ),
-                  ContinueWithGoogle(onPressed: () {
-                    
-                  },),
+                  ContinueWithGoogle(
+                    isLoading: state is SignUpWithGoogleLoading,
+                    onPressed: () => cubit.signUpWithGoogle(),
+                  ),
                   const SizedBox(
                     height: 15.0,
                   ),

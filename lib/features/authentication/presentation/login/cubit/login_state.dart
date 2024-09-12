@@ -11,4 +11,6 @@ final class LoginSuccessState extends LoginState {}
 
 final class LoginFailureState extends LoginState {}
 
+final class GoogleLoginLoading extends LoginState {}
+
 final class PasswordVisibilityChanged extends LoginState {}

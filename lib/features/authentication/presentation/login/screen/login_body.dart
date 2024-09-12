@@ -120,6 +120,7 @@ class LoginBody extends StatelessWidget {
                     height: 15.0,
                   ),
                   ContinueWithGoogle(
+                    isLoading: state is GoogleLoginLoading,
                     onPressed: cubit.signInWithGoogle,
                   ),
                   const SizedBox(

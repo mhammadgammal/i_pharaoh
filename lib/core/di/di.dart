@@ -7,7 +7,9 @@ import 'package:i_pharaoh/features/authentication/data/repository/auth_repositor
 import 'package:i_pharaoh/features/authentication/domain/use_case/sign_in_use_case.dart';
 import 'package:i_pharaoh/features/authentication/domain/use_case/sign_in_with_google_use_case.dart';
 import 'package:i_pharaoh/features/authentication/domain/use_case/sign_up_use_case.dart';
+import 'package:i_pharaoh/features/authentication/domain/use_case/sign_up_with_google_use_case.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import '../helpers/cache/cache_helper.dart';
 
 final sl = GetIt.instance;
@@ -29,6 +31,8 @@ Future<void> init() async {
   sl.registerLazySingleton<SignInUseCase>(() => SignInUseCase(sl.get()));
   sl.registerLazySingleton<SignInWithGoogleUseCase>(
       () => SignInWithGoogleUseCase(sl.get()));
+  sl.registerLazySingleton<SignUpWithGoogleUseCase>(
+      () => SignUpWithGoogleUseCase(sl.get()));
   sl.registerLazySingleton<SignUpUseCase>(() => SignUpUseCase(sl.get()));
   // #endregion
 

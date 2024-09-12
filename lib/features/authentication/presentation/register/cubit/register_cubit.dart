@@ -8,11 +8,19 @@ import 'package:i_pharaoh/core/utils/localization/app_strings.dart';
 import 'package:i_pharaoh/features/authentication/domain/use_case/sign_up_use_case.dart';
 import 'package:phone_form_field/phone_form_field.dart';
 
+import '../../../../../core/di/di.dart';
+import '../../../../../core/helpers/cache/cache_helper.dart';
+import '../../../../../core/helpers/cache/cache_keys.dart';
+import '../../../domain/use_case/sign_up_with_google_use_case.dart';
+
 part 'register_state.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
   final SignUpUseCase _signUpUseCase;
-  RegisterCubit(this._signUpUseCase) : super(RegisterInitial());
+  final SignUpWithGoogleUseCase _signUpWithGoogleUseCase;
+
+  RegisterCubit(this._signUpUseCase, this._signUpWithGoogleUseCase)
+      : super(RegisterInitial());
 
   bool isSecured = true;
 
@@ -100,6 +108,17 @@ class RegisterCubit extends Cubit<RegisterState> {
       log(e.toString());
       emit(SignUpFailureState());
     });
+  }
+
+  Future<void> signUpWithGoogle() async {
+    emit(SignUpWithGoogleLoading());
+
+    var authResult = await _signUpWithGoogleUseCase.perform();
+
+    authResult.fold((user) {
+      sl<CacheHelper>().putString(CacheKeys.uid, user.uid);
+      emit(SignUpSuccessState());
+    }, (err) => emit(SignUpFailureState()));
   }
 
   @override

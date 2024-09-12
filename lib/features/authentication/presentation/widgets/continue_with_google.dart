@@ -4,16 +4,24 @@ import 'package:i_pharaoh/core/utils/localization/app_localization.dart';
 import 'package:i_pharaoh/core/utils/localization/app_strings.dart';
 
 import '../../../../core/theme/app_images.dart';
+import '../../../../core/widgets/shimmer_loading.dart';
 
 class ContinueWithGoogle extends StatelessWidget {
-  const ContinueWithGoogle({super.key, required this.onPressed});
+  const ContinueWithGoogle(
+      {super.key, this.isLoading = false, required this.onPressed});
 
+  final bool isLoading;
   final void Function() onPressed;
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: onPressed,
-      style: ButtonStyle(
+    return isLoading
+        ? const ShimmerLoading(
+            baseColor: AppColors.goldSand,
+            height: 48.0,
+          )
+        : ElevatedButton(
+            onPressed: onPressed,
+            style: ButtonStyle(
           backgroundColor: const WidgetStatePropertyAll(Colors.transparent),
           shape: WidgetStatePropertyAll(
             RoundedRectangleBorder(

@@ -9,4 +9,6 @@ final class SignUpSuccessState extends RegisterState {}
 
 final class SignUpFailureState extends RegisterState {}
 
+final class SignUpWithGoogleLoading extends RegisterState {}
+
 final class PasswordVisibilityChanged extends RegisterState {}

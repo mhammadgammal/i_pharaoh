@@ -24,7 +24,7 @@ class IPharo extends StatelessWidget {
           ? RouterHelper.boarding
           : uid == null
               ? RouterHelper.signIn
-              : RouterHelper.home,
+              : RouterHelper.camera,
       routes: AppRouter.generateRoute,
       locale: sl<AppLanguage>().appLocal,
       supportedLocales: LocalizeConstants.supportedLocales,
