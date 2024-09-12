@@ -71,7 +71,7 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 
 flutter_native_splash:
-  image: assets/images/splash/eye_ic.png
+  image: assets/images/splash/frame_74.png
   color: "#FAFF00"
   android: true
   ios: true
