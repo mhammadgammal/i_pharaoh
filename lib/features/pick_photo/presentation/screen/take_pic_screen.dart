@@ -28,7 +28,11 @@ class TakePicScreen extends StatelessWidget {
           var screenWidth = ScreenUtils.getScreenWidth(context);
           var screenHeight = ScreenUtils.getScreenHeight(context);
 
-          return state is CmaeraPermissionState
+          return state is CheckCameraPermissionState ||
+                  cubit.cmaeraPermissionState ==
+                      CmaeraPermissionRequestState.DENIED ||
+                  cubit.cmaeraPermissionState ==
+                      CmaeraPermissionRequestState.PERMANENTLY_DENIED
               ? CameraPlaceholderWidget(
                   handleDenial: () => cubit.handleDenial(),
                 )

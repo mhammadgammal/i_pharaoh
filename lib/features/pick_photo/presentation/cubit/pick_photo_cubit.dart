@@ -1,4 +1,5 @@
 import 'dart:developer';
+
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -34,6 +35,7 @@ class PickPhotoCubit extends Cubit<PickPhotoState> {
   static PickPhotoCubit get(context) => BlocProvider.of(context);
 
   Future requestCameraPermission() async {
+    emit(CheckCameraPermissionState());
     var cameraPermssion = Permission.camera;
 
     if (await cameraPermssion.request().isDenied) {
@@ -65,8 +67,10 @@ class PickPhotoCubit extends Cubit<PickPhotoState> {
   }
 
   Future<void> openCamera() async {
-    await initializeCamera();
-    emit(CameraInitializedState());
+    if (cmaeraPermissionState == CmaeraPermissionRequestState.GRANTED) {
+      await initializeCamera();
+      emit(CameraInitializedState());
+    }
   }
 
   Future<void> onPhotoTaken() async {
@@ -114,6 +118,7 @@ class PickPhotoCubit extends Cubit<PickPhotoState> {
                 CmaeraPermissionRequestState.PERMANENTLY_DENIED
             ? openAppSettings().then((isGranted) {
                 if (isGranted) {
+                  cmaeraPermissionState = CmaeraPermissionRequestState.GRANTED;
                   openCamera();
                 }
               })

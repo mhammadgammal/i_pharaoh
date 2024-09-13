@@ -13,6 +13,8 @@ final class CameraInitializedState extends PickPhotoState {}
 
 final class ImageTakenState extends PickPhotoState {}
 
+final class CheckCameraPermissionState extends PickPhotoState {}
+
 final class CmaeraPermissionState extends PickPhotoState {
   final CmaeraPermissionRequestState permissionState;
   CmaeraPermissionState({required this.permissionState});
