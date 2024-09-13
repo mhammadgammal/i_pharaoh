@@ -18,4 +18,7 @@ abstract class AppColors {
 
   //rgba(217, 217, 217, 0.25)
   static const Color lightGrey = Color.fromRGBO(217, 217, 217, 0.25);
+
+  //Goldenrod Yellow
+  static const Color goldenrodYellow = Color(0xFFD6DA24);
 }

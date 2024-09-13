@@ -50,4 +50,9 @@ abstract class AppStrings {
   static String getStarted = 'get_started';
 
   static String next = 'next';
+
+  static String text = 'text';
+  static String video = 'video';
+
+  static String readAbout = 'read_about';
 }

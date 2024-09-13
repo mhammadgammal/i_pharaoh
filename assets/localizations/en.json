@@ -76,5 +76,8 @@
   "account_created_success": "Your Account Created Successfully",
   "on_boarding_text_1": "Coming to visit one of the Egyptian Landmarks ?",
   "on_boarding_text_2": "Need information about specific artifact ?",
-  "on_boarding_text_3": "Don’t worry all you need is to scan it with your phone"
+  "on_boarding_text_3": "Don’t worry all you need is to scan it with your phone",
+  "text": "Text",
+  "video": "Video",
+  "read_about": "Read About Him: "
 }

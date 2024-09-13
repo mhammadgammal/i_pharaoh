@@ -76,5 +76,8 @@
   "account_created_success": "تم إنشاء حسابك بنجاح",
   "on_boarding_text_1": "هل أنت آت لزياره أحد المعالم المصريه؟",
   "on_boarding_text_2": "هل تحتاج إلي معلومات عن أثر معين ؟",
-  "on_boarding_text_3": "لا تقلق ف كل ماتريده بين يديك"
+  "on_boarding_text_3": "لا تقلق ف كل ماتريده بين يديك",
+  "text": "نص",
+  "video": "فيديو",
+  "read_about": "أقرأ عن: "
 }
