@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
+import 'package:i_pharaoh/core/utils/screen_util/screen_utils.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoSection extends StatefulWidget {
@@ -29,20 +30,6 @@ class _VideoSectionState extends State<VideoSection> {
         });
       }).catchError((onError) {
         log('Error initializing video player: $onError');
-        if (context.mounted) {
-          showDialog(
-              context: context,
-              builder: (context) => AlertDialog(
-                    title: const Text('Error Initializing video player'),
-                    content: const Text(
-                        'Unexpected Error occurred, Please try again'),
-                    actions: [
-                      TextButton(
-                          onPressed: () => Navigator.pop(context),
-                          child: const Text('Ok'))
-                    ],
-                  ));
-        }
       });
     chewieController = ChewieController(
       videoPlayerController: _controller,
@@ -53,13 +40,17 @@ class _VideoSectionState extends State<VideoSection> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: _controller.value.isInitialized
-          ? AspectRatio(
-              aspectRatio: _controller.value.aspectRatio,
-              child: Chewie(controller: chewieController),
-            )
-          : Container(),
+    return SizedBox(
+      width: ScreenUtils.getScreenWidth(context) * 0.95,
+      height: ScreenUtils.getScreenHeight(context) * 0.95,
+      child: Center(
+        child: _controller.value.isInitialized
+            ? AspectRatio(
+                aspectRatio: _controller.value.aspectRatio,
+                child: Chewie(controller: chewieController),
+              )
+            : Container(),
+      ),
     );
   }
 }

@@ -58,6 +58,7 @@ class ShowCubit extends Cubit<ShowState> {
   }
 
   Future<void> _fetchPyramids(String folderName) async {
+    log('folderName: $folderName');
     List<Reference> references = [];
 
     if (folderName.isNotEmpty) {
@@ -65,19 +66,31 @@ class ShowCubit extends Cubit<ShowState> {
       result.fold((refs) => references = refs, (err) => error = err);
       for (var ref in references) {
         var url = await ref.getDownloadURL();
-        txtUrl = url.contains('.txt') ? url : '';
-        _audioUrl = url.contains('.mp3') ? url : '';
-        _videoUrl = url.contains('.mp4') ? url : '';
-        emit(GetUrlsState());
-        log('url of ${ref.name}: $url');
+        log('url: $url');
+        txtUrl = txtUrl.isEmpty
+            ? url.contains('.txt')
+                ? url
+                : ''
+            : txtUrl;
+        _audioUrl = _audioUrl.isEmpty
+            ? url.contains('.mp3')
+                ? url
+                : ''
+            : _audioUrl;
+        _videoUrl = _videoUrl.isEmpty
+            ? url.contains('.mp4')
+                ? url
+                : ''
+            : _videoUrl;
+
+        // log('url of ${ref.name}: $txtUrl');
       }
-      if (txtUrl.isNotEmpty) {
-        final response = await http.get(Uri.parse(txtUrl));
-        if (response.statusCode == 200) {
-          _infoText = response.body;
+      emit(GetUrlsState());
+      final response = await http.get(Uri.parse(txtUrl));
+      if (response.statusCode == 200) {
+        _infoText = response.body;
           emit(GetInfoTextState());
-          // log('txt downloaded: ${response.body}');
-        }
+        log('txt downloaded: ${response.body}');
       }
     }
   }

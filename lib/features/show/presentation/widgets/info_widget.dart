@@ -47,22 +47,19 @@ class InfoWidget extends StatelessWidget {
                       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                           color: Colors.black, fontWeight: FontWeight.bold),
                     ),
-                    Visibility(
-                      visible: infoText.isNotEmpty,
-                      child: Container(
-                        width: double.infinity,
-                        height: infoText.isEmpty ? 300.0 : null,
-                        padding: const EdgeInsetsDirectional.all(5.0),
-                        decoration: BoxDecoration(
+                    Container(
+                      width: double.infinity,
+                      height: infoText.isEmpty ? 300.0 : null,
+                      padding: const EdgeInsetsDirectional.all(5.0),
+                      decoration: BoxDecoration(
                           border: Border.all(
                               color: AppColors.goldenrodYellow, width: 1.5),
                           borderRadius:
-                                const BorderRadius.all(Radius.circular(25.0))),
-                        child: Text(
-                          infoText,
+                              const BorderRadius.all(Radius.circular(25.0))),
+                      child: Text(
+                        infoText,
                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                             color: Colors.black, fontWeight: FontWeight.bold),
-                      ),
                       ),
                     )
                   ],

@@ -29,7 +29,7 @@ class ShowScreen extends StatelessWidget {
                       pinned: true,
                       centerTitle: true,
                       title: Text(
-                        'Pyramids',
+                        cubit.predictedClass,
                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                             color: Colors.white, fontWeight: FontWeight.bold),
                       ),

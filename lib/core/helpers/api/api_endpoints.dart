@@ -1,5 +1,5 @@
 abstract class ApiEndPoints {
-  static const baseUrl = 'https://1b1e-197-36-142-9.ngrok-free.app/';
+  static const baseUrl = 'https://da3b-35-184-234-135.ngrok-free.app/';
   static const String predict = 'predict/';
 
 }
