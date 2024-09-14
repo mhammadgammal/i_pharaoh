@@ -44,9 +44,12 @@ class ShowScreen extends StatelessWidget {
                               width: double.infinity,
                               fit: BoxFit.cover,
                             ),
-                            SizedBox(
-                                height: 70.0,
-                                child: AudioInfoWidget(cubit.getAudioUrl())),
+                            Visibility(
+                              visible: cubit.getAudioUrl().isNotEmpty,
+                              child: SizedBox(
+                                  height: 70.0,
+                                  child: AudioInfoWidget(cubit.getAudioUrl())),
+                            )
                           ],
                         ),
                       ),

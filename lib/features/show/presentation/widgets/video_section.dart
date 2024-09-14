@@ -29,6 +29,20 @@ class _VideoSectionState extends State<VideoSection> {
         });
       }).catchError((onError) {
         log('Error initializing video player: $onError');
+        if (context.mounted) {
+          showDialog(
+              context: context,
+              builder: (context) => AlertDialog(
+                    title: const Text('Error Initializing video player'),
+                    content: const Text(
+                        'Unexpected Error occurred, Please try again'),
+                    actions: [
+                      TextButton(
+                          onPressed: () => Navigator.pop(context),
+                          child: const Text('Ok'))
+                    ],
+                  ));
+        }
       });
     chewieController = ChewieController(
       videoPlayerController: _controller,

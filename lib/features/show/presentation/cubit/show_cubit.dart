@@ -9,6 +9,9 @@ import 'package:http/http.dart' as http;
 import 'package:i_pharaoh/features/show/presentation/widgets/selection_button.dart';
 import 'package:path/path.dart';
 
+import '../../../../core/di/di.dart';
+import '../../../../core/helpers/api/api_client.dart';
+import '../../../../core/helpers/api/api_endpoints.dart';
 import '../../../../core/utils/firebase/firebase_storage.dart';
 
 part 'show_state.dart';
@@ -20,10 +23,12 @@ class ShowCubit extends Cubit<ShowState> {
 
   String _audioUrl = '';
   String _infoText = '';
-
+  String _videoUrl = '';
   String getAudioUrl() => _audioUrl;
 
   String getInfoText() => _infoText;
+
+  String getVidUrl() => _videoUrl;
   String txtUrl = '';
   String error = '';
   final SelectionButtonController selectionButtonController =
@@ -40,34 +45,39 @@ class ShowCubit extends Cubit<ShowState> {
     FormData formData = FormData.fromMap({
       "pic": await MultipartFile.fromFile(imageFile.path, filename: fileName),
     });
-    //
-    // var response = await sl<ApiClient>().post(ApiEndPoints.predict, formData);
-    //
-    // var responseStatusCode = response.statusCode;
-    // var message = response.data['message'];
-    // predictedClass = response.data['detected_class'];
-    await _fetchPyramids('pyramids');
+
+    var response = await sl<ApiClient>().post(ApiEndPoints.predict, formData);
+
+    var responseStatusCode = response.statusCode;
+    var message = response.data['message'];
+    predictedClass = response.data['detected_class'];
+    await _fetchPyramids(
+        _predictedClassesToStorageFolders[predictedClass] ?? '');
     // emit(DoneState());
     // log('ShowCubit: predictImg: $responseStatusCode: $message');
   }
 
   Future<void> _fetchPyramids(String folderName) async {
     List<Reference> references = [];
-    var result = await fetchDetectedDocument(folderName);
-    result.fold((refs) => references = refs, (err) => error = err);
-    for (var ref in references) {
-      var url = await ref.getDownloadURL();
-      txtUrl = url.contains('.txt') ? url : '';
-      _audioUrl = url.contains('.mp3') ? url : '';
-      emit(GetAudioUrlState());
-      log('url of ${ref.name}: $url');
-    }
-    if (txtUrl.isNotEmpty) {
-      final response = await http.get(Uri.parse(txtUrl));
-      if (response.statusCode == 200) {
-        _infoText = response.body;
-        emit(GetInfoTextState());
-        // log('txt downloaded: ${response.body}');
+
+    if (folderName.isNotEmpty) {
+      var result = await fetchDetectedDocument(folderName);
+      result.fold((refs) => references = refs, (err) => error = err);
+      for (var ref in references) {
+        var url = await ref.getDownloadURL();
+        txtUrl = url.contains('.txt') ? url : '';
+        _audioUrl = url.contains('.mp3') ? url : '';
+        _videoUrl = url.contains('.mp4') ? url : '';
+        emit(GetUrlsState());
+        log('url of ${ref.name}: $url');
+      }
+      if (txtUrl.isNotEmpty) {
+        final response = await http.get(Uri.parse(txtUrl));
+        if (response.statusCode == 200) {
+          _infoText = response.body;
+          emit(GetInfoTextState());
+          // log('txt downloaded: ${response.body}');
+        }
       }
     }
   }
@@ -99,9 +109,6 @@ class ShowCubit extends Cubit<ShowState> {
   };
 
   onSelectionChanged(String value) {
-    // value == AppStrings.text
-    //     ?
-    //     : ;
     selectionButtonController.value = value;
     emit(SwiperIndexChangedState());
   }

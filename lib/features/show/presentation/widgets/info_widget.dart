@@ -34,7 +34,8 @@ class InfoWidget extends StatelessWidget {
             buttonWidth: ScreenUtils.getScreenWidth(context) * 0.32,
             buttonHeight: ScreenUtils.getScreenHeight(context) * 0.06,
             onChange: onSelectionChanged),
-        selectionButtonController.value == AppStrings.text
+        selectionButtonController.value ==
+                AppLocalizations.of(context).translate(AppStrings.text)
             ? Padding(
                 padding: const EdgeInsetsDirectional.all(15.0),
                 child: Column(
@@ -46,23 +47,31 @@ class InfoWidget extends StatelessWidget {
                       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                           color: Colors.black, fontWeight: FontWeight.bold),
                     ),
-                    Container(
-                      padding: const EdgeInsetsDirectional.all(5.0),
-                      decoration: BoxDecoration(
+                    Visibility(
+                      visible: infoText.isNotEmpty,
+                      child: Container(
+                        width: double.infinity,
+                        height: infoText.isEmpty ? 300.0 : null,
+                        padding: const EdgeInsetsDirectional.all(5.0),
+                        decoration: BoxDecoration(
                           border: Border.all(
                               color: AppColors.goldenrodYellow, width: 1.5),
                           borderRadius:
-                              const BorderRadius.all(Radius.circular(25.0))),
-                      child: Text(
-                        infoText,
+                                const BorderRadius.all(Radius.circular(25.0))),
+                        child: Text(
+                          infoText,
                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                             color: Colors.black, fontWeight: FontWeight.bold),
                       ),
-                    ),
+                      ),
+                    )
                   ],
                 ),
               )
-            : VideoSection(videoUrl: videoUrl),
+            : videoUrl.isNotEmpty
+                ? VideoSection(videoUrl: videoUrl)
+                : Container(),
+        // VideoSection(videoUrl: videoUrl)
       ],
     );
   }

@@ -9,7 +9,7 @@ final class Loading extends ShowState {}
 
 final class DoneState extends ShowState {}
 
-final class GetAudioUrlState extends ShowState {}
+final class GetUrlsState extends ShowState {}
 
 final class GetInfoTextState extends ShowState {}
 

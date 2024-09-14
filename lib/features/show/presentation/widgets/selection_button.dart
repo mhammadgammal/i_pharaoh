@@ -103,5 +103,5 @@ class _SelectionButtonState extends State<SelectionButton> {
 }
 
 class SelectionButtonController {
-  String value = 'Text';
+  String value = '';
 }
